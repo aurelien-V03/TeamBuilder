@@ -11,7 +11,7 @@ import javax.inject.Inject
 class SportifProfilViewModel @Inject constructor(): ViewModel() {
 
     private val mlScreenState = MutableLiveData<State>()
-    public val ldScreenState = mlScreenState
+    val ldScreenState = mlScreenState
 
     // MAJ du profil du sportif
     fun updateSportifProfil(sportPratique: String, poste: String, region: String, genre: String, age: String, rechercheActive: Boolean) = viewModelScope.launch {
