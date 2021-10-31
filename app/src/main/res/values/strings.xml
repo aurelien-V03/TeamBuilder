@@ -13,6 +13,11 @@
         <item>Voile</item>
         <item>Natation</item>
         <item>Athletisme</item>
+        <item>Volleyball</item>
+    </string-array>
+
+    <string-array name="noPoste">
+        <item></item>
     </string-array>
 
     <!-- Types d'utilisateurs -->
@@ -23,12 +28,67 @@
 
     <!-- Type de poste -->
     <string-array name="poste">
+    <!-- Type de poste football-->
+    <string-array name="posteFootball">
         <item>Attaquant</item>
         <item>Defenseur</item>
+        <item>Gardien</item>
+        <item>Milieu</item>
+        <item>Libéro</item>
     </string-array>
 
-    <!-- Type de Geographie -->
-    <string-array name="geo">
+    <!-- Type de poste basket-->
+    <string-array name="posteBasket">
+        <item>Arrière</item>
+        <item>Ailier</item>
+        <item>Ailier fort</item>
+        <item>Pivot</item>
+        <item>Meneur</item>
+    </string-array>
+
+    <!-- Type de poste handball-->
+    <string-array name="posteHandball">
+        <item>Ailier gauche</item>
+        <item>Arrière gauche</item>
+        <item>Gardien</item>
+        <item>Pivot</item>
+        <item>Demi-centre</item>
+        <item>Arrière droit</item>
+        <item>Ailier droit</item>
+    </string-array>
+
+    <!-- Type de poste rugby-->
+    <string-array name="posteRugby">
+        <item>Première ligne</item>
+        <item>Deuxième ligne</item>
+        <item>Troisième ligne</item>
+        <item>Demi de mêlée</item>
+        <item>Demi d\'ouverture</item>
+        <item>Trois-quarts centre</item>
+        <item>Trois-quarts aile</item>
+        <item>Arrière</item>
+    </string-array>
+
+    <!-- Type de pratiques ahtlétisme-->
+    <string-array name="posteAthletisme">
+        <item>Course à pieds</item>
+        <item>Sauts</item>
+        <item>Lancers</item>
+        <item>Épreuves combinées</item>
+        <item>Marche athlétique</item>
+    </string-array>
+
+    <!-- Type de poste volley-->
+    <string-array name="posteVolley">
+        <item>Central</item>
+        <item>Passeur</item>
+        <item>Réceptionneur-Attaquant</item>
+        <item>Pointu</item>
+        <item>Libéro</item>
+    </string-array>
+
+    <!-- Type de niveau -->
+    <string-array name="niveau">
         <item>Departementale</item>
         <item>Regionale</item>
         <item>Nationale</item>
@@ -46,7 +106,10 @@
     <string name="age">Age</string>
     <string name="profil_picture">Photo de profil</string>
     <string name="update_success">Mise à jour du profil effectuée</string>
-    <string name="update_faile">Un probleme est intervenu dans la mise à jour du profil</string>
+    <string name="update_faile">Un probleme est survenu pendant la mise à jour du profil</string>
+    <string name="teamName">Nom d\'équipe</string>
+    <string name="rechercheActive">Recherche active</string>
+    <string name="addTeam">Ajouter une équipe</string>
 
     <!-- Generic -->
     <string name="valider">Valider</string>

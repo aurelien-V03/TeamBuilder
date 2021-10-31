@@ -5,21 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/constraintLayout"
+        app:layout_anchorGravity="center">
 
         <net.steamcrafted.materialiconlib.MaterialIconView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/profileUser"
-            app:layout_constraintTop_toTopOf="@+id/profileUser"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/profileUser"
+            app:layout_constraintTop_toTopOf="@+id/profileUser"
+            app:materialIcon="pencil"
             app:materialIconColor="#fff"
-            app:materialIconSize="24dp"
-            app:materialIcon="pencil" />
+            app:materialIconSize="24dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,6 +33,7 @@
             app:layout_constraintEnd_toEndOf="@+id/profileUser"
             app:layout_constraintStart_toStartOf="@+id/profileUser"
             app:layout_constraintTop_toTopOf="@+id/profileUser" />
+
         <ImageView
             android:id="@+id/profileUser"
             android:layout_width="200dp"
@@ -54,8 +59,8 @@
             android:id="@+id/sportSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:layout_marginTop="20dp"
+            android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileUser" />
@@ -69,6 +74,7 @@
             app:layout_constraintEnd_toStartOf="@+id/posteSpinner"
             app:layout_constraintTop_toTopOf="@+id/posteSpinner"
             app:materialIcon="pin" />
+
         <Spinner
             android:id="@+id/posteSpinner"
             android:layout_width="wrap_content"
@@ -77,8 +83,8 @@
             android:padding="5dp"
 
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sportSpinner"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sportSpinner" />
 
         <net.steamcrafted.materialiconlib.MaterialIconView
             android:id="@+id/materialIconView3"
@@ -89,6 +95,7 @@
             app:layout_constraintEnd_toStartOf="@+id/geoSpinner"
             app:layout_constraintTop_toTopOf="@+id/geoSpinner"
             app:materialIcon="target" />
+
         <Spinner
             android:id="@+id/geoSpinner"
             android:layout_width="wrap_content"
@@ -96,8 +103,8 @@
             android:layout_marginTop="20dp"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/posteSpinner"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/posteSpinner" />
 
         <net.steamcrafted.materialiconlib.MaterialIconView
             android:id="@+id/materialIconView4"
@@ -108,6 +115,7 @@
             app:layout_constraintEnd_toStartOf="@+id/sexeSpinner"
             app:layout_constraintTop_toTopOf="@+id/sexeSpinner"
             app:materialIcon="gender_male" />
+
         <Spinner
             android:id="@+id/sexeSpinner"
             android:layout_width="wrap_content"
@@ -116,21 +124,21 @@
             android:padding="5dp"
 
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/geoSpinner"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/geoSpinner" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/age"
             android:layout_marginRight="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextAge"
-            app:layout_constraintEnd_toStartOf="@+id/editTextAge"
-            app:layout_constraintTop_toTopOf="@+id/editTextAge" />
+            android:text="@string/age"
+            app:layout_constraintBottom_toBottomOf="@+id/editTeamName"
+            app:layout_constraintEnd_toStartOf="@+id/editTeamName"
+            app:layout_constraintTop_toTopOf="@+id/editTeamName" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextAge"
+            android:id="@+id/editTeamName"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -141,11 +149,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recherche_offre"
             android:layout_marginRight="16dp"
+            android:text="@string/recherche_offre"
             app:layout_constraintBottom_toBottomOf="@+id/switchOfferLooking"
             app:layout_constraintEnd_toStartOf="@+id/switchOfferLooking"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
+            app:layout_constraintTop_toBottomOf="@+id/editTeamName" />
 
         <Switch
             android:id="@+id/switchOfferLooking"
@@ -154,32 +162,34 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
+            app:layout_constraintTop_toBottomOf="@+id/editTeamName" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="@string/video_demonstrative"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switchOfferLooking" />
+
         <Button
             android:id="@+id/addVideoDemo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="@string/video_demonstrative"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switchOfferLooking" />
+
         <Button
             android:id="@+id/validate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:text="@string/valider"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addVideoDemo" />
 

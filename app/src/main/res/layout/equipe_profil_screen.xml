@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sportifProfilstScreen"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="988dp">
+
+                <TextView
+                    android:id="@+id/textAddTeam"
+                    android:layout_width="123dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="128dp"
+                    android:text="@string/addTeam"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintBottom_toTopOf="@+id/mapView"
+                    app:layout_constraintStart_toEndOf="@+id/posteSpinner" />
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/profileUser"
+                    app:layout_constraintTop_toTopOf="@+id/profileUser"
+                    app:materialIcon="pencil"
+                    app:materialIconColor="@color/black"
+                    app:materialIconSize="24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profil_picture"
+                    app:layout_constraintBottom_toBottomOf="@+id/profileUser"
+                    app:layout_constraintEnd_toEndOf="@+id/profileUser"
+                    app:layout_constraintStart_toStartOf="@+id/profileUser"
+                    app:layout_constraintTop_toTopOf="@+id/profileUser" />
+
+                <ImageView
+                    android:id="@+id/profileUser"
+                    android:layout_width="378dp"
+                    android:layout_height="203dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/round_blue_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.515"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/equipeSpinner"
+                    android:layout_width="194dp"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/profileUser"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.903"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <Spinner
+                    android:id="@+id/sportSpinner"
+                    android:layout_width="140dp"
+                    android:layout_height="31dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:entries="@array/sports"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/posteSpinner"
+                    app:layout_constraintStart_toEndOf="@+id/sportIcon" />
+
+                <Spinner
+                    android:id="@+id/posteSpinner"
+                    android:layout_width="140dp"
+                    android:layout_height="31dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/levelSpinner"
+                    app:layout_constraintStart_toEndOf="@+id/posteIcon" />
+
+                <Spinner
+                    android:id="@+id/personSpinner"
+                    android:layout_width="140dp"
+                    android:layout_height="31dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="28dp"
+                    android:entries="@array/sexes"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/mapView"
+                    app:layout_constraintStart_toEndOf="@+id/personIcon" />
+
+                <Spinner
+                    android:id="@+id/levelSpinner"
+                    android:layout_width="140dp"
+                    android:layout_height="31dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:entries="@array/niveau"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/personSpinner"
+                    app:layout_constraintStart_toEndOf="@+id/levelIcon" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:text="@string/teamName"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBottom_toBottomOf="@+id/editTeamName"
+                    app:layout_constraintEnd_toStartOf="@+id/editTeamName"
+                    app:layout_constraintTop_toTopOf="@+id/editTeamName"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTeamName"
+                    android:layout_width="281dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.876"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileUser" />
+
+                <Switch
+                    android:id="@+id/switchOfferLooking"
+                    android:layout_width="49dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/addButton"
+                    app:layout_constraintStart_toEndOf="@+id/textResearch" />
+
+                <TextView
+                    android:id="@+id/textResearch"
+                    android:layout_width="123dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/rechercheActive"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintBottom_toTopOf="@+id/textAddTeam"
+                    app:layout_constraintStart_toEndOf="@+id/sportSpinner" />
+
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="33dp"
+                    android:layout_height="37dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_revert"
+                    app:tint="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/addButton"
+                    android:layout_width="33dp"
+                    android:layout_height="37dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="124dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/mapView"
+                    app:layout_constraintStart_toEndOf="@+id/textAddTeam"
+                    app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
+                    app:tint="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/sportIcon"
+                    android:layout_width="38dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/posteIcon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_sports_basketball_24"
+                    app:tint="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/posteIcon"
+                    android:layout_width="38dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/levelIcon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_push_pin_24"
+                    app:tint="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/levelIcon"
+                    android:layout_width="38dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/personIcon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_attribution_24"
+                    app:tint="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/personIcon"
+                    android:layout_width="38dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/mapView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_person_24"
+                    app:tint="@color/black" />
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="386dp"
+                    android:layout_height="141dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/profilButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settingsButton"
+                    app:srcCompat="@drawable/ic_baseline_account_box_24" />
+
+                <ImageButton
+                    android:id="@+id/settingsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="312dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_settings_24" />
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="434dp"
+                    android:layout_height="142dp"
+                    android:layout_marginBottom="160dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </TableLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
