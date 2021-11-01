@@ -13,7 +13,7 @@ import fr.miage.teambuilder.repository.UserRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class SignInViewModel @Inject constructor(userRepository: UserRepository): ViewModel() {
+class SignInViewModel @Inject constructor(val userRepository: UserRepository): ViewModel() {
 
         private val mldState: MutableLiveData<State> = MutableLiveData()
          val ldState: LiveData<State> = mldState

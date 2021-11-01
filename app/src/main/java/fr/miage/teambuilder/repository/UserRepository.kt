@@ -1,28 +1,27 @@
 package fr.miage.teambuilder.repository
 
-import android.app.Activity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import fr.miage.teambuilder.ui.signIn.SignInViewModel
+import fr.miage.teambuilder.models.rest.Club
+import fr.miage.teambuilder.models.rest.FirestoreCollections
+import fr.miage.teambuilder.models.rest.Sportif
+import java.util.*
 import javax.inject.Inject
 
 class UserRepository @Inject constructor() {
 
     val db = Firebase.firestore
 
-    fun createUser(email:String? = null, nom:String? = null, prenom: String?= null, userType:String? = null){
-            val user = hashMapOf(
-                "email" to email,
-                "nom" to nom,
-                "prenom" to prenom,
-                "userType" to userType,
-                "sexe" to null,
-                "age" to null
-            )
-        db.collection("users").add(user)
+    fun createSportif(email:String? = null, nom:String? = null, prenom: String?= null, userType:String? = null, uuid:String){
+        val sportif = Sportif(email = email ?: "", nom = nom, prenom = prenom, userType = userType, uid = UUID.randomUUID().toString())
+        db.collection(FirestoreCollections.SPORTIFS.colectionName).document(uuid).set(sportif)
     }
+
+    fun createClub(email:String? = null, nom:String? = null, prenom: String?= null, userType:String? = null, uuid:String){
+        val club = Club(email = email, uid = UUID.randomUUID().toString())
+        db.collection(FirestoreCollections.CLUB.colectionName).document(uuid).set(club)
+    }
+
 
 
 

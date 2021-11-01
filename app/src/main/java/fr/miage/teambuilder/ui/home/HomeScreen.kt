@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -13,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import fr.miage.teambuilder.R
 import fr.miage.teambuilder.enums.UserType
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeScreen  : AppCompatActivity() {
@@ -35,6 +37,8 @@ class HomeScreen  : AppCompatActivity() {
         refuseButton = findViewById(R.id.buttonRefuse)
         sportifProfil = findViewById(R.id.sportifDetail)
         clubProfil = findViewById(R.id.equipeDetail)
+
+       viewModel.initialisation()
 
         val userType = intent.getSerializableExtra("userType")
         if(userType == UserType.CLUB){

@@ -30,7 +30,15 @@ class SignUpViewModel @Inject constructor(val userRepository: UserRepository): V
                 .addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
-                        userRepository.createUser(email = email, nom = nom, prenom = prenom, userType = userType)
+                        when(userType){
+                            "Club" -> {
+                                userRepository.createClub(email = email, nom = nom, prenom = prenom, userType = userType, uuid = user?.uid ?: "")
+
+                            }
+                            "Sportif" -> {
+                                userRepository.createSportif(email = email, nom = nom, prenom = prenom, userType = userType, uuid = user?.uid ?: "")
+                            }
+                        }
                         mldState.value = State.SuccessSignUp
                     } else {
                         mldState.value = State.FailSignUp(task.exception?.message ?: "Error")
