@@ -9,4 +9,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_red">#ff3a31</color>
     <color name="button_green">#4ed964</color>
+    <color name="color1">#5BC1FF</color>
+    <color name="color2">#B2FDFD</color>
+    <color name="color3">#DBF9F7</color>
+    <color name="color4">#FBE4F6</color>
+    <color name="color5">#FC82FE</color>
+    <color name="color6">#766DC1</color>
+    <color name="color7">#2D3F4E</color>
+    <color name="color8">#FF6347</color>
+    <color name="color10">#e0af1f</color>
+    <color name="color11">#DCDCDC</color>
+    <color name="color12">#2F4F4F</color>
 </resources>

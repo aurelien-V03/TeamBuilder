@@ -70,4 +70,11 @@
     <string name="sign_up_user_type">Je suis</string>
     <string name="sign_up_success">"Inscription réussie</string>
     <string name="sign_up_incorrect_input">Attention tous vos champs ne sont pas valides</string>
+
+    <!-- font Familly -->
+
+    <string name="cursive">cursive</string>
+    <string name="monospace">monospace</string>
+
+
 </resources>
