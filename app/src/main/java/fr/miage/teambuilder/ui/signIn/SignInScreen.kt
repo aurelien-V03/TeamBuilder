@@ -43,8 +43,8 @@ class SignInScreen : AppCompatActivity() {
                 SignInViewModel.State.FailSignIn -> {
                     onFailSignIn()
                 }
-                SignInViewModel.State.SuccessSignIn -> {
-                    onSuccessSignIn()
+                is SignInViewModel.State.SuccessSignIn -> {
+                    onSuccessSignIn(it.connectedAsSportif)
                 }
             }
         }
@@ -71,10 +71,13 @@ class SignInScreen : AppCompatActivity() {
         textFieldMessage.text =  resources.getString(R.string.sign_in_incorrect_input)
     }
 
-    fun onSuccessSignIn(){
+    fun onSuccessSignIn(connectedAsSportif: Boolean){
+
+        val userType = if(connectedAsSportif) UserType.SPORTIF else UserType.CLUB
+
         Snackbar.make(content, R.string.sign_in_success_sign_in, Snackbar.LENGTH_LONG).show()
         val intent = Intent(this, HomeScreen::class.java).apply {
-            putExtra("userType", UserType.CLUB)
+            putExtra("userType", userType)
         }
         startActivity(intent)
     }

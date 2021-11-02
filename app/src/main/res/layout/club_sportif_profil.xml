@@ -1,118 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/sportifDetail"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
+
+    <TextView
+        android:id="@+id/connectedAs"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="connected as"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sportifDetail"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connectedAs">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
-            <TextView
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/homeScreenCurrentProfilDisplayed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profil_picture"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/profilImage"
-                app:layout_constraintStart_toStartOf="@+id/profilImage"
-                app:layout_constraintTop_toTopOf="@+id/profilImage" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/profilImage"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@drawable/round_blue_button"
-                app:layout_constraintBottom_toBottomOf="parent"
+                <ImageView
+                    android:id="@+id/profilImage"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/ic_profil"
+                    android:background="@drawable/round_blue_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/homeScreenCurrentProfilDisplayed">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:materialIcon="face" />
+
+                <TextView
+                    android:id="@+id/textviewName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bob" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
+                    app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
+                    app:layout_constraintTop_toTopOf="@+id/sportSpinner"
+                    app:materialIcon="cake_variant" />
+
+                <TextView
+                    android:id="@+id/textviewAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22 ans" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
+                    app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
+                    app:layout_constraintTop_toTopOf="@+id/sportSpinner"
+                    app:materialIcon="human_male" />
+
+                <TextView
+                    android:id="@+id/textviewTaille"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="178cm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
+                    app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
+                    app:layout_constraintTop_toTopOf="@+id/sportSpinner"
+                    app:materialIcon="pin" />
+
+                <TextView
+                    android:id="@+id/textviewPoste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="attaquant" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
+                    app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
+                    app:layout_constraintTop_toTopOf="@+id/sportSpinner"
+                    app:materialIcon="target" />
+
+                <TextView
+                    android:id="@+id/textviewRegion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="France" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <net.steamcrafted.materialiconlib.MaterialIconView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
-                app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
-                app:layout_constraintTop_toTopOf="@+id/sportSpinner"
-                app:materialIcon="cake_variant" />
-            <TextView
-                android:id="@+id/textviewAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="22 ans"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <net.steamcrafted.materialiconlib.MaterialIconView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
-                app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
-                app:layout_constraintTop_toTopOf="@+id/sportSpinner"
-                app:materialIcon="human_male" />
-            <TextView
-                android:id="@+id/textviewTaille"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="178cm"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <net.steamcrafted.materialiconlib.MaterialIconView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
-                app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
-                app:layout_constraintTop_toTopOf="@+id/sportSpinner"
-                app:materialIcon="pin" />
-
-            <TextView
-                android:id="@+id/textviewPoste"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="attaquant" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <net.steamcrafted.materialiconlib.MaterialIconView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/sportSpinner"
-                app:layout_constraintEnd_toStartOf="@+id/sportSpinner"
-                app:layout_constraintTop_toTopOf="@+id/sportSpinner"
-                app:materialIcon="target" />
-            <TextView
-                android:id="@+id/textviewRegion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="France"/>
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:id="@+id/equipeDetail"

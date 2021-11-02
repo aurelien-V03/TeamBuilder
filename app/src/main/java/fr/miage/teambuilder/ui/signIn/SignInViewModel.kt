@@ -5,11 +5,14 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import fr.miage.teambuilder.enums.UserType
 import fr.miage.teambuilder.repository.UserRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,10 +33,12 @@ class SignInViewModel @Inject constructor(val userRepository: UserRepository): V
                 auth = Firebase.auth
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(activity) { task ->
+
                         if (task.isSuccessful) {
                             val user = auth.currentUser
-                            mldState.value = State.SuccessSignIn
-
+                            user?.let {
+                                getUserType(it.uid)
+                            }
                         } else {
                             mldState.value = State.FailSignIn
                         }
@@ -41,6 +46,19 @@ class SignInViewModel @Inject constructor(val userRepository: UserRepository): V
 
             }
         }
+    fun getUserType(userUid: String)
+    {
+        viewModelScope.launch {
+            val userType = userRepository.getuserType(userUid)
+            if(userType == UserType.CLUB.type){
+                mldState.value = State.SuccessSignIn(connectedAsSportif = false)
+            }
+            else{
+                mldState.value = State.SuccessSignIn(connectedAsSportif = true)
+            }
+        }
+    }
+
 
         fun signUp(){
 
@@ -48,7 +66,7 @@ class SignInViewModel @Inject constructor(val userRepository: UserRepository): V
 
     sealed class State{
             class InputIncorrect(val isEmailCorrect:Boolean, val isPasswordCorrect: Boolean): State()
-            object SuccessSignIn: State()
+            class SuccessSignIn(val connectedAsSportif: Boolean): State()
             object FailSignIn: State()
     }
 }

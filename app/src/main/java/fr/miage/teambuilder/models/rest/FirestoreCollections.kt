@@ -4,5 +4,6 @@ enum class FirestoreCollections(val colectionName: String) {
     SPORTIFS("sportif"),
     CLUB("club"),
     EQUIPE("equipe"),
-    MATCH("match")
+    MATCH("match"),
+    USER("user")
 }
