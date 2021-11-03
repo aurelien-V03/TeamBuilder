@@ -28,13 +28,15 @@ class EquipeRepository @Inject constructor(val equipeDao: EquipeDao) {
         return equipeDao.getEquipes()
     }
 
-    fun sportifLike(hasAccepted: Boolean, uidSportif:String, uidEquipe: String){
+    suspend fun sportifLike(hasAccepted: Boolean, uidSportif:String, uidEquipe: String){
         if(hasAccepted){
             db.collection(FirestoreCollections.EQUIPE.colectionName).document(uidEquipe).update("sportifAlreadyLiked", FieldValue.arrayUnion(uidSportif))
         }
         else{
             db.collection(FirestoreCollections.EQUIPE.colectionName).document(uidEquipe).update("sportifAlreadyUnliked", FieldValue.arrayUnion(uidSportif))
         }
+        equipeDao.deleteEquipe(uidEquipe)
+
     }
 
 

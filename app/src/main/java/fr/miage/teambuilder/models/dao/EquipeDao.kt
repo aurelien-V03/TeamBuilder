@@ -14,4 +14,7 @@ interface EquipeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEquipes(equipesEntities: List<EquipeEntity>)
+
+    @Query("DELETE FROM EquipeEntity WHERE uid = :id")
+    suspend fun deleteEquipe(id: String)
 }

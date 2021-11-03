@@ -7,11 +7,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.miage.teambuilder.models.dao.SportifEntity
-import fr.miage.teambuilder.repository.ClubRepository
-import fr.miage.teambuilder.repository.EquipeRepository
-import fr.miage.teambuilder.repository.MatchRepository
-import fr.miage.teambuilder.repository.SportifRepository
+import fr.miage.teambuilder.repository.*
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,16 +18,14 @@ class HomeViewModel @Inject constructor(
     val sportifRepository: SportifRepository,
     val clubRepository: ClubRepository,
     val equipeRepository: EquipeRepository,
-    val matchRepository: MatchRepository
+    val matchRepository: MatchRepository,
+    val userRepository: UserRepository
     ): ViewModel() {
 
+    val userUid = userRepository.getUserUid()
 
     val sportifs = sportifRepository.getSportifs()
-    val equipe = equipeRepository.getEquipes()
-
-   init {
-
-   }
+    val equipe = equipeRepository.getEquipes().map { it.filter { it.sportifAlreadyLiked.contains(userUid) == false ||  it.sportifAlreadyLiked.contains(userUid) == false } }
 
     fun initialisation(){
         viewModelScope.launch {
@@ -41,8 +37,11 @@ class HomeViewModel @Inject constructor(
     }
 
 
-    fun sportifLike(hasAccepted: Boolean, uidSportif: String, uidEquipe: String){
-        equipeRepository.sportifLike(hasAccepted, uidSportif,uidEquipe)
+    fun sportifLike(hasAccepted: Boolean,uidEquipe: String){
+        val userUid = userRepository.getUserUid()
+        viewModelScope.launch {
+            equipeRepository.sportifLike(hasAccepted, userUid ,uidEquipe)
+        }
     }
 
 

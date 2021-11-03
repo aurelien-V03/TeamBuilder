@@ -43,13 +43,13 @@ class SignInViewModel @Inject constructor(val userRepository: UserRepository): V
                             mldState.value = State.FailSignIn
                         }
                     }
-
             }
         }
     fun getUserType(userUid: String)
     {
         viewModelScope.launch {
             val userType = userRepository.getuserType(userUid)
+            userRepository.addUserUid(userUid)
             if(userType == UserType.CLUB.type){
                 mldState.value = State.SuccessSignIn(connectedAsSportif = false)
             }
@@ -60,9 +60,6 @@ class SignInViewModel @Inject constructor(val userRepository: UserRepository): V
     }
 
 
-        fun signUp(){
-
-        }
 
     sealed class State{
             class InputIncorrect(val isEmailCorrect:Boolean, val isPasswordCorrect: Boolean): State()

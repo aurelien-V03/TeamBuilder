@@ -73,7 +73,6 @@ class HomeScreen  : AppCompatActivity() {
         val userType = intent.getSerializableExtra("userType")
 
         if(userType == UserType.CLUB){
-            sportifProfil.visibility = View.VISIBLE
             clubProfil.visibility = View.GONE
             connectedAsTextView.text = resources.getString(R.string.home_screen_connected_as, resources.getString(R.string.home_screen_club))
             displayClubContent()
@@ -81,7 +80,6 @@ class HomeScreen  : AppCompatActivity() {
         }
         else{
             sportifProfil.visibility = View.GONE
-            clubProfil.visibility = View.VISIBLE
             connectedAsTextView.text = resources.getString(R.string.home_screen_connected_as, resources.getString(R.string.home_screen_sportif))
             displaySportifContent()
         }
@@ -104,7 +102,7 @@ class HomeScreen  : AppCompatActivity() {
                 updateClubContent()
             }
             UserType.SPORTIF -> {
-                viewModel.sportifLike(hasAccepted, "123",currentEquipeDisplayed?.uid ?: "")
+                currentEquipeDisplayed?.let { viewModel.sportifLike(hasAccepted, it.uid) }
                 val newList = equipeListToDisplay.filter { it.uid != currentEquipeDisplayed?.uid }
                 equipeListToDisplay = newList
                 currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
@@ -116,15 +114,16 @@ class HomeScreen  : AppCompatActivity() {
     // si l'utilisateur connecté est un sportif --> afficher les equipes a matcher
     fun displaySportifContent(){
         lifecycleScope.launch {
-           val list = viewModel.equipe.first()
-            equipeListToDisplay = list
-            currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
-            updateSportifContent()
-
+            viewModel.equipe.collect {
+                equipeListToDisplay = it
+                currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
+                updateSportifContent()
+           }
         }
     }
     fun updateSportifContent(){
         if(currentEquipeDisplayed != null){
+            clubProfil.visibility = View.VISIBLE
             textViewNameEquipe?.text = currentEquipeDisplayed?.nomEquipe
             textViewFondationEquipe?.text = currentEquipeDisplayed?.dateFondation
             textViewTelephoneEquipe?.text = currentEquipeDisplayed?.telephoneReferant
@@ -140,15 +139,16 @@ class HomeScreen  : AppCompatActivity() {
     // si l'utilisateur connecté est un club --> afficher les sportifs a matcher
     fun displayClubContent(){
         lifecycleScope.launch {
-            val list = viewModel.sportifs.first()
-            sportifsListToDisplay = list
-            currentSportifDisplayed = sportifsListToDisplay.firstOrNull()
-            updateClubContent()
-
+             viewModel.sportifs.collect {
+                sportifsListToDisplay = it
+                currentSportifDisplayed = sportifsListToDisplay.firstOrNull()
+                updateClubContent()
+            }
         }
     }
     fun updateClubContent(){
         if(currentSportifDisplayed != null){
+            sportifProfil.visibility = View.VISIBLE
             textviewName?.text = currentSportifDisplayed?.nom
             textviewAge?.text = currentSportifDisplayed?.age.toString()
             textviewNiveau?.text = currentSportifDisplayed?.niveau ?: "niveau inconnu"
