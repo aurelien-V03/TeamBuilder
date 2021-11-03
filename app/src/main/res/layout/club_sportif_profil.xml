@@ -20,6 +20,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/sportifDetail"
+        android:visibility="gone"
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:layout_marginTop="50dp"
@@ -186,18 +187,160 @@
 
     </androidx.cardview.widget.CardView>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/equipeDetail"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:visibility="visible"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/connectedAs">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayoutClubName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/textviewEquipeName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Equipe" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/homeScreenCurrentClubProfilDisplayed"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/round_blue_button"
+                android:src="@drawable/ic_profil"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutClubName" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayoutEquipFondation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeScreenCurrentClubProfilDisplayed">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:materialIcon="calendar" />
+
+                <TextView
+                    android:id="@+id/textviewClubDateFondation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="date fondation" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayoutClubPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutEquipFondation">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:materialIcon="phone" />
+
+                <TextView
+                    android:id="@+id/textviewEquipePhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0650675642" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutClubSports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutClubPhone">
+
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    app:materialIcon="tennis" />
+
+                <TextView
+                    android:id="@+id/textviewEquipeSports"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tennis, foot" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/empty_research"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connectedAs">
+
+        <net.steamcrafted.materialiconlib.MaterialIconView
+            android:id="@+id/materialIconView5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:materialIcon="alert_circle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:text="@string/home_screen_empty_research"
+            app:layout_constraintBottom_toBottomOf="@+id/materialIconView5"
+            app:layout_constraintStart_toEndOf="@+id/materialIconView5"
+            app:layout_constraintTop_toTopOf="@+id/materialIconView5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="75dp"
@@ -207,21 +350,21 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonRefuse"
+            style="@style/main_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:backgroundTint="@color/button_red"
-            android:text="@string/refuser"
-            style="@style/main_button" />
+            android:text="@string/refuser" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonAccept"
+            style="@style/main_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:backgroundTint="@color/button_green"
             android:text="@string/accepter"
-            style="@style/main_button"
             app:layout_constraintStart_toEndOf="@+id/materialButton" />
 
     </LinearLayout>

@@ -75,5 +75,6 @@
     <string name="home_screen_club">Club</string>
     <string name="home_screen_sportif">Sportif</string>
     <string name="home_screen_connected_as">Vous etes connecté en tant que %1$s</string>
+    <string name="home_screen_empty_research">Aucun élément trouvé...</string>
 
 </resources>

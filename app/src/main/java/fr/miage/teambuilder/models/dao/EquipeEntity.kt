@@ -18,4 +18,8 @@ data class EquipeEntity(
     val typesSport: ArrayList<String> = arrayListOf(),
     val sportifAlreadyLiked: ArrayList<String> = arrayListOf(),
     val sportifAlreadyUnliked: ArrayList<String> = arrayListOf()
-)
+){
+    fun getSportsAsString():String{
+        return typesSport?.reduce{ acc, string -> acc + " " + string }
+    }
+}

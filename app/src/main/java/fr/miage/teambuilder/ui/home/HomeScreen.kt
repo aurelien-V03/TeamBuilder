@@ -2,27 +2,20 @@ package fr.miage.teambuilder.ui.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import fr.miage.teambuilder.R
 import fr.miage.teambuilder.enums.UserType
-import fr.miage.teambuilder.models.dao.ClubEntity
+import fr.miage.teambuilder.models.dao.EquipeEntity
 import fr.miage.teambuilder.models.dao.SportifEntity
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 @AndroidEntryPoint
 class HomeScreen  : AppCompatActivity() {
@@ -32,15 +25,21 @@ class HomeScreen  : AppCompatActivity() {
     lateinit var acceptButton: MaterialButton
     lateinit var refuseButton: MaterialButton
     lateinit var sportifProfil: CardView
-    lateinit var clubProfil: LinearLayout
+    lateinit var clubProfil: CardView
     lateinit var connectedAsTextView: TextView
+
+
+    // empty research
+    var emptyResearch: ConstraintLayout? = null
 
     // sportif detail
     var textviewName: TextView? = null; var textviewAge: TextView? = null ; var textviewTaille: TextView? = null; var textviewPoste: TextView? = null; var textviewNiveau: TextView? = null
-    // club detail
 
-    var clubListToDisplay: List<ClubEntity> = mutableListOf()
-    var currentClubDisplayed: ClubEntity? = null
+    // club detail
+    var textViewNameEquipe: TextView?= null; var textViewFondationEquipe: TextView? = null;var textViewTelephoneEquipe: TextView? = null;var textViewSportsEquipe: TextView? = null
+
+    var equipeListToDisplay: List<EquipeEntity> = mutableListOf()
+    var currentEquipeDisplayed: EquipeEntity? = null
 
     var sportifsListToDisplay: List<SportifEntity> = mutableListOf()
     var currentSportifDisplayed: SportifEntity? = null
@@ -62,6 +61,12 @@ class HomeScreen  : AppCompatActivity() {
         textviewPoste = findViewById(R.id.textviewPoste)
         textviewNiveau = findViewById(R.id.textviewRegion)
 
+        textViewNameEquipe = findViewById(R.id.textviewEquipeName)
+        textViewFondationEquipe = findViewById(R.id.textviewClubDateFondation)
+        textViewTelephoneEquipe = findViewById(R.id.textviewEquipePhone)
+        textViewSportsEquipe = findViewById(R.id.textviewEquipeSports)
+
+        emptyResearch = findViewById(R.id.empty_research)
         viewModel.initialisation()
 
         val userType = intent.getSerializableExtra("userType")
@@ -80,38 +85,47 @@ class HomeScreen  : AppCompatActivity() {
             displaySportifContent()
         }
 
-
         acceptButton.setOnClickListener {
-            when(userType){
-                UserType.CLUB -> {
-                    sportifsListToDisplay = sportifsListToDisplay.filter { it.uid != currentSportifDisplayed?.uid }
-                    currentSportifDisplayed = sportifsListToDisplay.firstOrNull()
-                    updateClubContent()
-                }
-                UserType.SPORTIF -> {
-
-                }
-            }
+            onMatch(true, userType as UserType)
         }
 
         refuseButton.setOnClickListener {
-
+            onMatch(false, userType as UserType)
         }
-
-
     }
 
-    // si l'utilisateur connecté est un sportif --> afficher les clubs a matcher
+    fun onMatch(hasAccepted: Boolean, userType: UserType){
+        when(userType){
+            UserType.CLUB -> {
+                sportifsListToDisplay = sportifsListToDisplay.filter { it.uid != currentSportifDisplayed?.uid }
+                currentSportifDisplayed = sportifsListToDisplay.firstOrNull()
+                updateClubContent()
+            }
+            UserType.SPORTIF -> {
+                equipeListToDisplay = equipeListToDisplay.filter { it.uid != currentEquipeDisplayed?.uid }
+                currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
+                updateSportifContent()
+            }
+        }
+    }
+
+    // si l'utilisateur connecté est un sportif --> afficher les equipes a matcher
     fun displaySportifContent(){
         lifecycleScope.launch {
-           viewModel.club.collect {
-               clubListToDisplay = it
+           viewModel.equipe.collect {
+               equipeListToDisplay = it
+               currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
                updateSportifContent()
             }
         }
     }
     fun updateSportifContent(){
-
+        if(currentEquipeDisplayed != null){
+            textViewNameEquipe?.text = currentEquipeDisplayed?.nomEquipe
+            textViewFondationEquipe?.text = currentEquipeDisplayed?.dateFondation
+            textViewTelephoneEquipe?.text = currentEquipeDisplayed?.telephoneReferant
+            textViewSportsEquipe?.text = currentEquipeDisplayed?.getSportsAsString()
+        }
     }
 
     // si l'utilisateur connecté est un club --> afficher les sportifs a matcher

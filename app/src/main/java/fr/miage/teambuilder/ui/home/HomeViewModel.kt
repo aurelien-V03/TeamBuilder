@@ -25,7 +25,7 @@ class HomeViewModel @Inject constructor(
 
 
     val sportifs = sportifRepository.getSportifs()
-    val club = clubRepository.getClubs()
+    val equipe = equipeRepository.getEquipes()
 
    init {
 

@@ -13,9 +13,9 @@ class Equipe constructor(
     val slogan: String? = null,
     val adresse: String? = null,
     val codePostal: String? = null,
-    val typesSport: ArrayList<String> = arrayListOf(),
-    val sportifAlreadyLiked: ArrayList<String> = arrayListOf(),
-    val sportifAlreadyUnliked: ArrayList<String> = arrayListOf(),
+    val typesSport: ArrayList<String>? = null,
+    val sportifAlreadyLiked: ArrayList<String>? = null,
+    val sportifAlreadyUnliked: ArrayList<String>? = null,
 ){
     fun toEntity(): EquipeEntity{
         return EquipeEntity(
@@ -27,9 +27,9 @@ class Equipe constructor(
             slogan = slogan,
             adresse = adresse,
             codePostal = codePostal,
-            typesSport = typesSport,
-            sportifAlreadyLiked = sportifAlreadyLiked,
-            sportifAlreadyUnliked = sportifAlreadyUnliked
+            typesSport = typesSport ?: arrayListOf(),
+            sportifAlreadyLiked = sportifAlreadyLiked ?: arrayListOf(),
+            sportifAlreadyUnliked = sportifAlreadyUnliked ?: arrayListOf()
         )
     }
 
