@@ -23,6 +23,17 @@
                 android:layout_height="988dp">
 
                 <TextView
+                    android:id="@+id/textAddRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="@string/addTeamResult"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
                     android:id="@+id/textAddTeam"
                     android:layout_width="123dp"
                     android:layout_height="26dp"
@@ -188,6 +199,18 @@
                     app:tint="@color/black" />
 
                 <ImageButton
+                    android:id="@+id/addButton2"
+                    android:layout_width="33dp"
+                    android:layout_height="37dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="46dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textAddRow"
+                    app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
+                    app:tint="@color/black" />
+
+                <ImageButton
                     android:id="@+id/sportIcon"
                     android:layout_width="38dp"
                     android:layout_height="35dp"
@@ -239,9 +262,10 @@
                     android:id="@+id/mapView"
                     android:layout_width="386dp"
                     android:layout_height="141dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/tableLayout"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.48"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageButton
@@ -249,7 +273,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginBottom="56dp"
+                    android:layout_marginBottom="24dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/settingsButton"
                     app:srcCompat="@drawable/ic_baseline_account_box_24" />
@@ -258,16 +282,16 @@
                     android:id="@+id/settingsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="296dp"
-                    android:layout_marginBottom="56dp"
+                    android:layout_marginStart="304dp"
+                    android:layout_marginBottom="24dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:srcCompat="@drawable/ic_baseline_settings_24" />
 
                 <TableLayout
                     android:id="@+id/tableLayout"
-                    android:layout_width="407dp"
-                    android:layout_height="136dp"
+                    android:layout_width="409dp"
+                    android:layout_height="190dp"
                     android:layout_marginBottom="144dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -276,18 +300,22 @@
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <TextView
-                        android:text="Nom du club"
-                            android:padding="22dp"></TextView>
+                            android:padding="22dp"
+                            android:text="Nom du club"></TextView>
+
                         <TextView
-                            android:text="Année"
-                            android:padding="21dp"></TextView>
+                            android:padding="21dp"
+                            android:text="Année"></TextView>
+
                         <TextView
-                        android:text="Niveau"
-                            android:padding="22dp"></TextView>
+                            android:padding="22dp"
+                            android:text="Niveau"></TextView>
+
                         <TextView
-                            android:text="Classement"
-                            android:padding="22dp"></TextView>
+                            android:padding="22dp"
+                            android:text="Classement"></TextView>
                     </TableRow>
 
                 </TableLayout>

@@ -133,12 +133,12 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             android:text="@string/age"
-            app:layout_constraintBottom_toBottomOf="@+id/editTeamName"
-            app:layout_constraintEnd_toStartOf="@+id/editTeamName"
-            app:layout_constraintTop_toTopOf="@+id/editTeamName" />
+            app:layout_constraintBottom_toBottomOf="@+id/editTextAge"
+            app:layout_constraintEnd_toStartOf="@+id/editTextAge"
+            app:layout_constraintTop_toTopOf="@+id/editTextAge" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTeamName"
+            android:id="@+id/editTextAge"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -153,7 +153,7 @@
             android:text="@string/recherche_offre"
             app:layout_constraintBottom_toBottomOf="@+id/switchOfferLooking"
             app:layout_constraintEnd_toStartOf="@+id/switchOfferLooking"
-            app:layout_constraintTop_toBottomOf="@+id/editTeamName" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
 
         <Switch
             android:id="@+id/switchOfferLooking"
@@ -162,7 +162,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTeamName" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
 
         <Button
             android:layout_width="wrap_content"
