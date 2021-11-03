@@ -41,9 +41,9 @@ class SportifProfilScreen : AppCompatActivity() {
          toggle = findViewById(R.id.switchOfferLooking)
          validateButton = findViewById(R.id.validate)
 
-       SpinnerManager.setAdaptaterSpinner(this, R.array.sports, sportsSpinner)
-        SpinnerManager.setAdaptaterSpinner(this, R.array.poste, posteSpinner)
-        SpinnerManager.setAdaptaterSpinner(this, R.array.geo, geoSpinner)
+        SpinnerManager.setAdaptaterSpinner(this, R.array.sports, sportsSpinner)
+        SpinnerManager.setAdaptaterSpinner(this, R.array.noPoste, posteSpinner)
+        SpinnerManager.setAdaptaterSpinner(this, R.array.niveau, geoSpinner)
         SpinnerManager.setAdaptaterSpinner(this, R.array.sexes, sexeSpinner)
 
         viewModel.ldScreenState.observe(this, androidx.lifecycle.Observer {
