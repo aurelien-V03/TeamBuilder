@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginBottom="55dp"
                     android:text="@string/addTeamResult"
                     android:textColor="@android:color/holo_red_dark"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -203,7 +203,7 @@
                     android:layout_width="33dp"
                     android:layout_height="37dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginBottom="46dp"
+                    android:layout_marginBottom="55dp"
                     android:backgroundTint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textAddRow"
@@ -303,19 +303,19 @@
 
                         <TextView
                             android:padding="22dp"
-                            android:text="Nom du club"></TextView>
+                            android:text="@string/clubName"></TextView>
 
                         <TextView
                             android:padding="21dp"
-                            android:text="Année"></TextView>
+                            android:text="@string/year"></TextView>
 
                         <TextView
                             android:padding="22dp"
-                            android:text="Niveau"></TextView>
+                            android:text="@string/level"></TextView>
 
                         <TextView
                             android:padding="22dp"
-                            android:text="Classement"></TextView>
+                            android:text="@string/rank"></TextView>
                     </TableRow>
 
                 </TableLayout>
