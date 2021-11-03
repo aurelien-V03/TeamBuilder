@@ -248,8 +248,8 @@
                     android:id="@+id/profilButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="56dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/settingsButton"
                     app:srcCompat="@drawable/ic_baseline_account_box_24" />
@@ -258,36 +258,38 @@
                     android:id="@+id/settingsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="312dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="296dp"
+                    android:layout_marginBottom="56dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:srcCompat="@drawable/ic_baseline_settings_24" />
 
                 <TableLayout
                     android:id="@+id/tableLayout"
-                    android:layout_width="434dp"
-                    android:layout_height="142dp"
-                    android:layout_marginBottom="160dp"
+                    android:layout_width="407dp"
+                    android:layout_height="136dp"
+                    android:layout_marginBottom="144dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent">
+                        <TextView
+                        android:text="Nom du club"
+                            android:padding="22dp"></TextView>
+                        <TextView
+                            android:text="Année"
+                            android:padding="21dp"></TextView>
+                        <TextView
+                        android:text="Niveau"
+                            android:padding="22dp"></TextView>
+                        <TextView
+                            android:text="Classement"
+                            android:padding="22dp"></TextView>
+                    </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
                 </TableLayout>
 
 
