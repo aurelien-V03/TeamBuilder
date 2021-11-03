@@ -1,5 +1,6 @@
 package fr.miage.teambuilder.repository
 
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import fr.miage.teambuilder.models.dao.EquipeDao
@@ -26,4 +27,15 @@ class EquipeRepository @Inject constructor(val equipeDao: EquipeDao) {
     fun getEquipes(): Flow<List<EquipeEntity>> {
         return equipeDao.getEquipes()
     }
+
+    fun sportifLike(hasAccepted: Boolean, uidSportif:String, uidEquipe: String){
+        if(hasAccepted){
+            db.collection(FirestoreCollections.EQUIPE.colectionName).document(uidEquipe).update("sportifAlreadyLiked", FieldValue.arrayUnion(uidSportif))
+        }
+        else{
+            db.collection(FirestoreCollections.EQUIPE.colectionName).document(uidEquipe).update("sportifAlreadyUnliked", FieldValue.arrayUnion(uidSportif))
+        }
+    }
+
+
 }

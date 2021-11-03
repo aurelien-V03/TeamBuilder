@@ -15,6 +15,7 @@ import fr.miage.teambuilder.enums.UserType
 import fr.miage.teambuilder.models.dao.EquipeEntity
 import fr.miage.teambuilder.models.dao.SportifEntity
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -97,12 +98,15 @@ class HomeScreen  : AppCompatActivity() {
     fun onMatch(hasAccepted: Boolean, userType: UserType){
         when(userType){
             UserType.CLUB -> {
-                sportifsListToDisplay = sportifsListToDisplay.filter { it.uid != currentSportifDisplayed?.uid }
+                val newList = sportifsListToDisplay.filter { it.uid != currentSportifDisplayed?.uid }
+                sportifsListToDisplay = newList
                 currentSportifDisplayed = sportifsListToDisplay.firstOrNull()
                 updateClubContent()
             }
             UserType.SPORTIF -> {
-                equipeListToDisplay = equipeListToDisplay.filter { it.uid != currentEquipeDisplayed?.uid }
+                viewModel.sportifLike(hasAccepted, "123",currentEquipeDisplayed?.uid ?: "")
+                val newList = equipeListToDisplay.filter { it.uid != currentEquipeDisplayed?.uid }
+                equipeListToDisplay = newList
                 currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
                 updateSportifContent()
             }
@@ -112,11 +116,11 @@ class HomeScreen  : AppCompatActivity() {
     // si l'utilisateur connecté est un sportif --> afficher les equipes a matcher
     fun displaySportifContent(){
         lifecycleScope.launch {
-           viewModel.equipe.collect {
-               equipeListToDisplay = it
-               currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
-               updateSportifContent()
-            }
+           val list = viewModel.equipe.first()
+            equipeListToDisplay = list
+            currentEquipeDisplayed = equipeListToDisplay.firstOrNull()
+            updateSportifContent()
+
         }
     }
     fun updateSportifContent(){
@@ -126,16 +130,21 @@ class HomeScreen  : AppCompatActivity() {
             textViewTelephoneEquipe?.text = currentEquipeDisplayed?.telephoneReferant
             textViewSportsEquipe?.text = currentEquipeDisplayed?.getSportsAsString()
         }
+        else if(currentEquipeDisplayed == null && equipeListToDisplay.isEmpty()){
+            clubProfil.visibility = View.GONE
+            emptyResearch?.visibility = View.VISIBLE
+
+        }
     }
 
     // si l'utilisateur connecté est un club --> afficher les sportifs a matcher
     fun displayClubContent(){
         lifecycleScope.launch {
-            viewModel.sportifs.collect {
-                sportifsListToDisplay = it
-                currentSportifDisplayed = sportifsListToDisplay.first()
-                updateClubContent()
-            }
+            val list = viewModel.sportifs.first()
+            sportifsListToDisplay = list
+            currentSportifDisplayed = sportifsListToDisplay.firstOrNull()
+            updateClubContent()
+
         }
     }
     fun updateClubContent(){
@@ -146,8 +155,9 @@ class HomeScreen  : AppCompatActivity() {
             textviewPoste?.text = currentSportifDisplayed?.poste ?: "poste inconnu"
             textviewTaille?.text = currentSportifDisplayed?.taille.toString()
         }
-        else{
-            sportifProfil.visibility = View.INVISIBLE
+        else if(currentSportifDisplayed == null && sportifsListToDisplay.isEmpty()){
+            sportifProfil.visibility = View.GONE
+            emptyResearch?.visibility = View.VISIBLE
         }
 
     }

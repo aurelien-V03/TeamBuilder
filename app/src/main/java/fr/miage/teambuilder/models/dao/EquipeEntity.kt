@@ -20,6 +20,11 @@ data class EquipeEntity(
     val sportifAlreadyUnliked: ArrayList<String> = arrayListOf()
 ){
     fun getSportsAsString():String{
-        return typesSport?.reduce{ acc, string -> acc + " " + string }
+        if(typesSport.isNotEmpty()){
+            return typesSport?.reduce{ acc, string -> acc + " " + string }
+        }
+        else{
+            return "Aucun sports"
+        }
     }
 }

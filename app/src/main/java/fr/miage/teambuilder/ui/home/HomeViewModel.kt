@@ -41,11 +41,9 @@ class HomeViewModel @Inject constructor(
     }
 
 
-    fun acceptMatch(){
-
+    fun sportifLike(hasAccepted: Boolean, uidSportif: String, uidEquipe: String){
+        equipeRepository.sportifLike(hasAccepted, uidSportif,uidEquipe)
     }
 
-    fun refuseMatch(){
 
-    }
 }

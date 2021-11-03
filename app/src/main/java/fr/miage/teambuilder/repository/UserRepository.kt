@@ -29,17 +29,12 @@ class UserRepository @Inject constructor() {
         val club = Club(email = email, uid = UUID.randomUUID().toString())
         db.collection(FirestoreCollections.CLUB.colectionName).document(uuid).set(club)
         createUser(email, uuid, userType)
-
     }
 
     suspend fun getuserType(uid: String): String{
         val user = db.collection(FirestoreCollections.USER.colectionName).document(uid).get().await().toObject(User::class.java)
         return user?.userType ?: ""
     }
-//
-//    fun getUserType(email: String, uid:String){
-//        db.collection(FirestoreCollections.)
-//    }
 
 
 
