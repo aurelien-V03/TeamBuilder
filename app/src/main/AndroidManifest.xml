@@ -38,6 +38,11 @@
         </activity>
 
         <activity
+            android:name="fr.miage.teambuilder.ui.equipe.EquipeProfil"
+            android:exported="true">
+        </activity>
+
+        <activity
             android:name="fr.miage.teambuilder.ui.login.SignUpScreen"
             android:exported="true">
         </activity>

@@ -1,6 +1,9 @@
 package fr.miage.teambuilder.ui.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -9,11 +12,15 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.firestore.auth.User
 import dagger.hilt.android.AndroidEntryPoint
 import fr.miage.teambuilder.R
 import fr.miage.teambuilder.enums.UserType
 import fr.miage.teambuilder.models.dao.EquipeEntity
 import fr.miage.teambuilder.models.dao.SportifEntity
+import fr.miage.teambuilder.ui.equipe.EquipeProfil
+import fr.miage.teambuilder.ui.signIn.SignUpScreen
+import fr.miage.teambuilder.ui.sportif.SportifProfilScreen
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -45,6 +52,8 @@ class HomeScreen  : AppCompatActivity() {
     var sportifsListToDisplay: List<SportifEntity> = mutableListOf()
     var currentSportifDisplayed: SportifEntity? = null
 
+    var connectedAsSportif: Boolean? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,12 +82,14 @@ class HomeScreen  : AppCompatActivity() {
         val userType = intent.getSerializableExtra("userType")
 
         if(userType == UserType.CLUB){
+            connectedAsSportif = false
             clubProfil.visibility = View.GONE
             connectedAsTextView.text = resources.getString(R.string.home_screen_connected_as, resources.getString(R.string.home_screen_club))
             displayClubContent()
 
         }
         else{
+            connectedAsSportif = true
             sportifProfil.visibility = View.GONE
             connectedAsTextView.text = resources.getString(R.string.home_screen_connected_as, resources.getString(R.string.home_screen_sportif))
             displaySportifContent()
@@ -93,6 +104,40 @@ class HomeScreen  : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater =  menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when(item.itemId){
+        R.id.action_edit_settings -> {
+            connectedAsSportif?.let {
+                if(it){
+                    goToSportifEditSettings()
+                }
+                else{
+                    goToEquipeSettings()
+                }
+            }
+            true
+        }
+        else -> {
+             super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun goToSportifEditSettings(){
+        val intent = Intent(this, SportifProfilScreen::class.java).apply {
+        }
+        startActivity(intent)
+    }
+
+    fun goToEquipeSettings(){
+        val intent = Intent(this, EquipeProfil::class.java).apply {
+        }
+        startActivity(intent)
+    }
     fun onMatch(hasAccepted: Boolean, userType: UserType){
         when(userType){
             UserType.CLUB -> {

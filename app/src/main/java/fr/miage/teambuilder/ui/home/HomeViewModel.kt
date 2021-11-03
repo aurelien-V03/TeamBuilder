@@ -25,7 +25,7 @@ class HomeViewModel @Inject constructor(
     val userUid = userRepository.getUserUid()
 
     val sportifs = sportifRepository.getSportifs()
-    val equipe = equipeRepository.getEquipes().map { it.filter { it.sportifAlreadyLiked.contains(userUid) == false ||  it.sportifAlreadyLiked.contains(userUid) == false } }
+    val equipe = equipeRepository.getEquipes().map { it.filter { it.sportifAlreadyLiked.contains(userUid) == false &&  it.sportifAlreadyUnliked.contains(userUid) == false } }
 
     fun initialisation(){
         viewModelScope.launch {

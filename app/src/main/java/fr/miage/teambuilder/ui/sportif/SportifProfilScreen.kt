@@ -1,6 +1,7 @@
 package fr.miage.teambuilder.ui.sportif
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.Switch
@@ -32,6 +33,9 @@ class SportifProfilScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sportif_profil_screen)
+
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         sportsSpinner = findViewById(R.id.sportSpinner)
          posteSpinner = findViewById(R.id.posteSpinner)
@@ -70,7 +74,12 @@ class SportifProfilScreen : AppCompatActivity() {
         }
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> { this.finish()}
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     private fun SuccessUpdate(){
         Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_LONG).show()

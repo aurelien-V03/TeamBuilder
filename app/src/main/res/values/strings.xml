@@ -21,6 +21,33 @@
         <item>Sportif</item>
     </string-array>
 
+    <!-- Club -->
+    <string name="teamName">Nom d\'équipe</string>
+    <string name="addTeam">Ajouter une équipe</string>
+    <string name="rechercheActive">Recherche active</string>
+    <string name="addTeamResult">Ajouter une année à votre historique</string>
+    <string name="clubName">Nom du club</string>
+    <string name="year">Année</string>
+    <string name="level">Niveau</string>
+    <string name="rank">Classement</string>
+
+
+    <!-- Type de poste volley-->
+    <string-array name="posteVolley">
+        <item>Central</item>
+        <item>Passeur</item>
+        <item>Réceptionneur-Attaquant</item>
+        <item>Pointu</item>
+        <item>Libéro</item>
+    </string-array>
+
+    <!-- Type de niveau -->
+    <string-array name="niveau">
+        <item>Departementale</item>
+        <item>Regionale</item>
+        <item>Nationale</item>
+    </string-array>
+
     <!-- Type de poste -->
     <string-array name="poste">
         <item>Attaquant</item>
@@ -77,4 +104,6 @@
     <string name="home_screen_connected_as">Vous etes connecté en tant que %1$s</string>
     <string name="home_screen_empty_research">Aucun élément trouvé...</string>
 
+    <!-- Menu -->
+    <string name="menu_edit_settings">action_edit_settings</string>
 </resources>
